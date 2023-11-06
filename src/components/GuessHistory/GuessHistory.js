@@ -1,14 +1,21 @@
 import React from 'react';
+import Guess from '../Guess';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
-function GuessHistory({guessList}) {  
+function GuessHistory({guessList}) {
+  const guesses = [];
+  console.log(guessList.length);
+  for (let i = 0; i < guessList.length; i++) {
+    guesses.push(guessList[i]);
+  }
+  for (let i = guessList.length; i < NUM_OF_GUESSES_ALLOWED; i++) {
+    guesses.push("      ");
+  }
+
   return (
-  <div className="guess-results">
-    <ul>
-      {guessList.map((guess, index) => (
-        <li key={index} className="guess">{guess}</li>
-      ))}
-    </ul>
-  </div>
+    <div className="guess-results">
+      {guesses.map((guess, index) => { return (index < NUM_OF_GUESSES_ALLOWED) ? <Guess guess={guess} key={index}/> : null })}
+    </div>
   );
 }
 

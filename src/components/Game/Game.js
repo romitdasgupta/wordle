@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { sample } from '../../utils';
+import { range, sample } from '../../utils';
 import { WORDS } from '../../data';
 import FormInput from '../FormInput';
 import GuessHistory from '../GuessHistory';
@@ -9,6 +9,7 @@ import GuessHistory from '../GuessHistory';
 const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
+
 function Game() {
   const [guessList, setGuessList] = React.useState([]);
   return (
