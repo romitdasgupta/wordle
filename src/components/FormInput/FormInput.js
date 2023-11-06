@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FormInput() {
+function FormInput({setGuessList}) {
   const [guess, setGuess] = React.useState("");
   function handleGuess(event) {
     const lastChar = event.target.value.toUpperCase()[event.target.value.length - 1];
@@ -18,6 +18,7 @@ function FormInput() {
       return;
     }
     console.log('form submitted with value:', guess);
+    setGuessList((guessList) => [...guessList, guess]);
     setGuess("");
   }
   return (
